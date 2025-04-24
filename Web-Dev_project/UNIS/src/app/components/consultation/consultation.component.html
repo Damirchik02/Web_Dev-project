@@ -1,0 +1,54 @@
+<div class="consultation-container">
+  <div class="consultation-card">
+    <h1>Request Consultation</h1>
+    <p class="subtitle">Get personalized guidance from our education experts</p>
+    
+    <div *ngIf="!isLoggedIn" class="login-required">
+      <p>You need to be logged in to request a consultation.</p>
+      <button (click)="redirectToLogin()" class="btn btn-primary">Login</button>
+    </div>
+    
+    <div *ngIf="isLoggedIn && !submitted">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="message">Your message</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="6" 
+            [(ngModel)]="consultationRequest.message" 
+            placeholder="Describe what kind of consultation you need..."
+            required></textarea>
+        </div>
+        
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="loading">
+          {{ loading ? 'Submitting...' : 'Submit Request' }}
+        </button>
+      </form>
+    </div>
+    
+    <div *ngIf="submitted && successMessage" class="success-message">
+      <div class="success-icon">✓</div>
+      <h2>Thank You!</h2>
+      <p>{{ successMessage }}</p>
+      <p class="next-steps">Our team will review your request and contact you soon.</p>
+      <button (click)="submitted = false" class="btn btn-secondary">Request Another Consultation</button>
+    </div>
+    
+    <!-- Display existing consultation requests -->
+    <div *ngIf="isLoggedIn && userRequests.length > 0" class="previous-requests">
+      <h2>Your Previous Requests</h2>
+      <div class="request-list">
+        <div *ngFor="let request of userRequests" class="request-card">
+          <div class="request-status" [ngClass]="request.status">{{ request.status }}</div>
+          <div class="request-date">{{ request.date | date:'medium' }}</div>
+          <div class="request-message">{{ request.message }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

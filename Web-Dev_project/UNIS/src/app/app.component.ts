@@ -1,34 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { UniversityService } from './university.service';
-
-interface Faculty {
-  name: string;
-  price: number;
-}
-
-interface University {
-  name: string;
-  rating: number;
-  price: number;
-  faculties: Faculty[];
-}
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
-  universities: University[] = [];
-
-  constructor(private universityService: UniversityService) {}
-
-  ngOnInit() {
-    this.universityService.getUniversities().subscribe(data => {
-      this.universities = data;
-    });
-  }
+export class AppComponent {
+  title = 'University Platform';
 }

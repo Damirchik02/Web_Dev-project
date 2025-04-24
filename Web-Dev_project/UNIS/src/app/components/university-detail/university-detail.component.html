@@ -1,0 +1,67 @@
+<div class="university-detail-container">
+  <div *ngIf="loading" class="loading">
+    <p>Loading university details...</p>
+  </div>
+  
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+  
+  <div *ngIf="!loading && !error && university" class="university-content">
+    <div class="page-header">
+      <h1>{{ university.name }}</h1>
+      <div class="university-location">
+        <span>{{ university.city }}, {{ university.country }}</span>
+      </div>
+    </div>
+    
+    <div class="university-section">
+      <h2>About</h2>
+      <p class="university-description">{{ university.description }}</p>
+    </div>
+    
+    <div class="university-section">
+      <h2>Faculties</h2>
+      <div *ngIf="faculties.length === 0" class="no-data">
+        No faculties available for this university.
+      </div>
+      <div *ngIf="faculties.length > 0" class="faculty-tabs">
+        <ul class="faculty-nav">
+          <li *ngFor="let faculty of faculties">
+            <button 
+              [class.active]="selectedFacultyId === faculty.id"
+              (click)="selectFaculty(faculty.id)">
+              {{ faculty.name }}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div *ngIf="selectedFacultyId && programs.length > 0" class="university-section">
+      <h2>Programs</h2>
+      <div class="program-list">
+        <div *ngFor="let program of programs" class="program-card">
+          <h3>{{ program.name }}</h3>
+          <div class="program-details">
+            <div class="program-detail">
+              <strong>Duration:</strong> {{ program.duration }}
+            </div>
+            <div class="program-detail">
+              <strong>Cost:</strong> ${{ program.cost | number:'1.0-0' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="selectedFacultyId && programs.length === 0" class="no-data">
+      No programs available for the selected faculty.
+    </div>
+    
+    <div class="actions">
+      <a routerLink="/universities" class="btn btn-secondary">Back to Universities</a>
+      <a routerLink="/consultation" class="btn btn-primary">Request Consultation</a>
+    </div>
+  </div>
+</div>

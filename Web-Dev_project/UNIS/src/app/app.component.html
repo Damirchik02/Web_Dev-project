@@ -1,10 +1,11 @@
-<div *ngFor="let university of universities">
-  <h2>{{ university.name }} (Рейтинг: {{ university.rating }})</h2>
-  <p>Цена: {{ university.price }} рублей</p>
-  <h3>Факультеты:</h3>
-  <ul>
-    <li *ngFor="let faculty of university.faculties">
-      {{ faculty.name }} - {{ faculty.price }} рублей
-    </li>
-  </ul>
+<div class="app-container">
+  <app-header></app-header>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2023 University Platform. All rights reserved.</p>
+    </div>
+  </footer>
 </div>

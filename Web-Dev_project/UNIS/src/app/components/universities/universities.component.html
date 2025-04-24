@@ -1,0 +1,29 @@
+<div class="universities-container">
+  <div class="page-header">
+    <h1>Universities</h1>
+    <p>Explore our selection of top universities from around the world</p>
+  </div>
+  
+  <div *ngIf="loading" class="loading">
+    <p>Loading universities...</p>
+  </div>
+  
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+  
+  <div *ngIf="!loading && !error" class="university-list">
+    <div *ngFor="let university of universities" class="university-card">
+      <h2>{{ university.name }}</h2>
+      <div class="university-location">
+        <span>{{ university.city }}, {{ university.country }}</span>
+      </div>
+      <p class="university-description">{{ university.description | slice:0:150 }}...</p>
+      <a [routerLink]="['/universities', university.id]" class="btn btn-primary">View Details</a>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading && !error && universities.length === 0" class="no-results">
+    <p>No universities found.</p>
+  </div>
+</div>
