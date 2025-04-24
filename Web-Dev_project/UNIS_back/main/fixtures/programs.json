@@ -1,0 +1,52 @@
+[
+  {
+    "model": "main.program",
+    "pk": 1,
+    "fields": {
+      "name": "Computer Science BS",
+      "duration": "4 years",
+      "cost": "50000.00",
+      "faculty": 1
+    }
+  },
+  {
+    "model": "main.program",
+    "pk": 2,
+    "fields": {
+      "name": "Computer Science MS",
+      "duration": "2 years",
+      "cost": "70000.00",
+      "faculty": 1
+    }
+  },
+  {
+    "model": "main.program",
+    "pk": 3,
+    "fields": {
+      "name": "Electrical Engineering BS",
+      "duration": "4 years",
+      "cost": "48000.00",
+      "faculty": 2
+    }
+  },
+  {
+    "model": "main.program",
+    "pk": 4,
+    "fields": {
+      "name": "MBA",
+      "duration": "2 years",
+      "cost": "80000.00",
+      "faculty": 3
+    }
+  },
+  {
+    "model": "main.program",
+    "pk": 5,
+    "fields": {
+      "name": "English Literature",
+      "duration": "3 years",
+      "cost": "35000.00",
+      "faculty": 4
+    }
+  }
+] 

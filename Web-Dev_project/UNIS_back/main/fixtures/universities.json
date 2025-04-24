@@ -1,0 +1,62 @@
+[
+  {
+    "model": "main.university",
+    "pk": 1,
+    "fields": {
+      "name": "Massachusetts Institute of Technology",
+      "country": "USA",
+      "city": "Cambridge",
+      "description": "Massachusetts Institute of Technology (MIT) is a private research university in Cambridge, Massachusetts. Founded in 1861, MIT has since played a key role in the development of modern technology and science."
+    }
+  },
+  {
+    "model": "main.university",
+    "pk": 2,
+    "fields": {
+      "name": "Stanford University",
+      "country": "USA",
+      "city": "Stanford",
+      "description": "Stanford University is a private research university in Stanford, California. Stanford is ranked among the top universities in the world by academic publications."
+    }
+  },
+  {
+    "model": "main.university",
+    "pk": 3,
+    "fields": {
+      "name": "University of Oxford",
+      "country": "UK",
+      "city": "Oxford",
+      "description": "The University of Oxford is a collegiate research university in Oxford, England. It is the oldest university in the English-speaking world and the world's second-oldest university in continuous operation."
+    }
+  },
+  {
+    "model": "main.university",
+    "pk": 4,
+    "fields": {
+      "name": "Kazakh-British Technical University",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "description": "Kazakh-British Technical University (KBTU) is a leading technical university in Kazakhstan established in 2001. It offers programs in engineering, petroleum, IT, and business, with strong connections to British educational traditions."
+    }
+  },
+  {
+    "model": "main.university",
+    "pk": 5,
+    "fields": {
+      "name": "Al-Farabi Kazakh National University",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "description": "Al-Farabi Kazakh National University (KazGU) is the oldest and largest university in Kazakhstan, founded in 1934. It is named after the renowned medieval philosopher and scientist Al-Farabi and offers programs across a wide range of disciplines."
+    }
+  },
+  {
+    "model": "main.university",
+    "pk": 6,
+    "fields": {
+      "name": "KIMEP University",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "description": "KIMEP University (formerly the Kazakhstan Institute of Management, Economics and Strategic Research) is a private institution in Almaty, founded in 1992. It specializes in business administration, law, and social sciences, with all instruction in English."
+    }
+  }
+] 

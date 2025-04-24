@@ -1,0 +1,42 @@
+[
+  {
+    "model": "main.faculty",
+    "pk": 1,
+    "fields": {
+      "name": "Computer Science",
+      "university": 1
+    }
+  },
+  {
+    "model": "main.faculty",
+    "pk": 2,
+    "fields": {
+      "name": "Engineering",
+      "university": 1
+    }
+  },
+  {
+    "model": "main.faculty",
+    "pk": 3,
+    "fields": {
+      "name": "Business School",
+      "university": 2
+    }
+  },
+  {
+    "model": "main.faculty",
+    "pk": 4,
+    "fields": {
+      "name": "Humanities",
+      "university": 3
+    }
+  },
+  {
+    "model": "main.faculty",
+    "pk": 5,
+    "fields": {
+      "name": "Faculty of Information Technology",
+      "university": 4
+    }
+  }
+] 

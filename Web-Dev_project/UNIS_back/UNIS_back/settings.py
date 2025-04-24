@@ -12,52 +12,66 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Базовый путь проекта (корневая директория)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+# Настройки быстрого старта - не подходят для продакшена
+# См. https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# ВНИМАНИЕ: секретный ключ должен храниться в безопасности в продакшене!
 SECRET_KEY = 'django-insecure-=@gj0bnk=@cn3h$=uzjyhwvba!$09z432=rns1swr3fc72z^kf'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# ВНИМАНИЕ: режим отладки должен быть выключен в продакшене!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Установленные приложения
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'universities',
+    'django.contrib.admin',  # Административная панель Django
+    'django.contrib.auth',   # Система аутентификации и пользователей
+    'django.contrib.contenttypes',  # Система типов содержимого
+    'django.contrib.sessions',  # Сессии для хранения данных
+    'django.contrib.messages',  # Система сообщений
+    'django.contrib.staticfiles',  # Управление статическими файлами
+    'corsheaders',  # Поддержка CORS для API
+    'rest_framework',  # Django REST Framework для API
+    'rest_framework.authtoken',  # Аутентификация на основе токенов
+    'main',  # Основное приложение проекта
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',  # Безопасность
+    'django.contrib.sessions.middleware.SessionMiddleware',  # Сессии
+    'corsheaders.middleware.CorsMiddleware',  # CORS - должен быть перед CommonMiddleware
+    'django.middleware.common.CommonMiddleware',  # Общие функции
+    'django.middleware.csrf.CsrfViewMiddleware',  # Защита от CSRF
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Аутентификация
+    'django.contrib.messages.middleware.MessageMiddleware',  # Сообщения
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',  # Защита от кликджекинга
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",  # Добавь сюда URL твоего фронтенда
-]
+# Настройка CORS для разработки - разрешить все источники
+# В продакшене следует указать конкретные разрешенные источники
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:4200",
+#     "http://localhost:63697",
+# ]
 
-ROOT_URLCONF = 'UNIS_back.urls'
+# Разрешить запросы с любого источника (только для разработки!)
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Настройки Rest Framework для аутентификации
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # Аутентификация по токенам
+    ],
+}
+
+ROOT_URLCONF = 'UNIS_back.urls'  # Основной файл URL маршрутов
 
 TEMPLATES = [
     {
@@ -75,57 +89,57 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'UNIS_back.wsgi.application'
+WSGI_APPLICATION = 'UNIS_back.wsgi.application'  # Точка входа для WSGI серверов
 
 
-# Database
+# База данных
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',  # SQLite - простая БД для разработки
+        'NAME': BASE_DIR / 'db.sqlite3',  # Путь к файлу БД
     }
 }
 
 
-# Password validation
+# Валидация паролей
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # Проверка на схожесть с атрибутами пользователя
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # Минимальная длина
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # Проверка на популярные пароли
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # Проверка на полностью числовые пароли
     },
 ]
 
 
-# Internationalization
+# Интернационализация
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us'  # Язык по умолчанию
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC'  # Временная зона
 
-USE_I18N = True
+USE_I18N = True  # Включить интернационализацию
 
-USE_TZ = True
+USE_TZ = True  # Использовать временные зоны
 
 
-# Static files (CSS, JavaScript, Images)
+# Статические файлы (CSS, JavaScript, изображения)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/'  # URL путь к статическим файлам
 
-# Default primary key field type
+# Тип первичного ключа по умолчанию
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'  # Тип автоинкрементного поля для новых моделей
